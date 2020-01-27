@@ -1,0 +1,38 @@
+\begin{thebibliography}{1}
+
+\bibitem{dns}
+Sapio, Amedeo, I.~Abdelaziz, A.~Aldilaijan, M.~Canini, and P.~Kalnis,
+  ``{In-Network Computation is a Dumb Idea Whose Time Has Come},'' in {\em
+  Proceedings of the 16th ACM Workshop on Hot Topics in Networks},
+  pp.~150--156, ACM, 2017.
+
+\bibitem{p4xos}
+H.~T. Dang, P.~Bressana, H.~Wang, K.~S. Lee, H.~Weatherspoon, M.~Canini,
+  F.~Pedone, N.~Zilberman, and R.~Soul{\'e}, ``{P4xos: Consensus as a Network
+  Service},'' Tech Report, May 2018.
+
+\bibitem{dang16}
+H.~T. Dang, M.~Canini, F.~Pedone, and R.~Soul{\'e}, ``Paxos made switch-y,''
+  vol.~46, pp.~18--24, May 2016.
+
+\bibitem{sigarch}
+{Noa Zilberman}, ``{In-Network Computing}.''
+  \url{https://www.sigarch.org/in-network-computing-draft/}.
+
+\bibitem{yuta}
+Y.~Tokusashi, H.~T. Dang, F.~Pedone, R.~Soul{\'e}, and N.~Zilberman, ``The case
+  for in-network computing on demand,'' in {\em Proceedings of the Fourteenth
+  EuroSys Conference 2019}, EuroSys '19, (New York, NY, USA), pp.~21:1--21:16,
+  ACM, 2019.
+
+\bibitem{switchml}
+Z.~Xiong and N.~Zilberman, ``Do switches dream of machine learning?: Toward
+  in-network classification,'' in {\em Proceedings of the 18th ACM Workshop on
+  Hot Topics in Networks}, HotNets '19, (New York, NY, USA), pp.~25--33, ACM,
+  2019.
+
+\bibitem{resnet}
+{NVIDIA}, ``{NVIDIA Tesla Deep Learning Product Performance}.''
+  \url{https://developer.nvidia.com/deep-learning-performance-training-inference}.
+
+\end{thebibliography}

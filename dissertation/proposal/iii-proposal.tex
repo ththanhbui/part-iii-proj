@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+\usepackage{a4wide,parskip}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\usepackage{hyperref}
+
+\hypersetup{
+	colorlinks   = true, %Colours links instead of ugly boxes
+	urlcolor     = blue, %Colour for external hyperlinks
+	linkcolor    = blue, %Colour of internal links
+	citecolor   = blue %Colour of citations
+}
+
+\usepackage[english]{babel}
+
+\begin{document}
+
+\centerline{\Large Complex Features Extraction in Real Time}
+\vspace{2em}
+\centerline{\Large \emph{A Part III project proposal}}
+\vspace{2em}
+\centerline{\large T. T. Bui (\emph{ttb29}), Downing College}
+\vspace{1em}
+\centerline{\large Project Supervisor: Dr Noa Zilberman}
+\medskip
+\centerline{\large Director of Studies: Dr Robert K. Harle}
+\vspace{1em}
+
+\begin{abstract}
+\textsl{
+	In-network computing is an emerging research area in systems and networking, where applications traditionally running on the host are offloaded to the network hardware (e.g., switch, NIC). In the past, many applications have been offloaded, even machine learning (ML) on a commodity programmable switch. However, only features extracted from packet headers or metadata have been used for inference. Many ML models require more complex features beyond those obtained from packet headers and metadata. This project aims to explore the possibility and the extent to which we can extract features. The project will be done in P4 programming language on one of two available platforms: bmv2, a P4 software switch, or NetFPGA. A successful outcome could help utilise the potential benefits that in-network computing could offer, including better latency, throughput and power efficiency.
+} 
+\end{abstract}
+
+\section{Introduction, approach and outcomes (500 words)}
+In-network computing is an emerging research area in systems and networking, where applications traditionally running on the host are offloaded to the network hardware (e.g., switch, NIC). Examples of applications offloaded in the past include network functions (DNS server \cite{dns}) and distributed systems functions such as consensus (P4xos \cite{p4xos, dang16}). In-network computing offers benefits in the form of better performance, both in terms of throughput and latency, and power efficiency \cite{sigarch}. Typical numbers range from $\times$10--100 latency, $\times10,000$ throughput and $\times1,000$ power efficiency \cite{yuta}.\\
+
+Recently, a paper published by Z. Xiong and N. Zilberman \cite{switchml} discussed the possibility of in-network classification, in preparation for Machine Learning (ML) on a commodity programmable switch. Doing ML within the network could offer a potential, which we are still far from, of $10$’s of $ns$ to $\mu s$ 10M’s of images inference/sec and 10K--100K of images/sec/watt, which are more superior than what most GPUs can offer (100’s of $\mu s$ to $ms$, 10K’s of images inference/sec, 100 images/sec/watt \cite{resnet}). However, one limitation of the prototype was that inference was performed using information from packet headers and metadata, e.g., source and destination IP address, source and destination port number, etc. This limits it to just packet classification. Many ML models require features that are more complex than just information from packet headers and metadata. At the moment, there is no previous work that looks into extracting these complex features.\\
+
+The main goal of my project is to explore the feasibility and the extent to which we can extract more complex features beyond headers and metadata. To approach the problem, I first have to identify the different features and their use cases with regard to ML, ranging from simple networking-related features, such as total duration of a flow or the flow size, to extremely complex features (e.g., used in image inference). This is done based on previous works in the networking context and in-network computing. Then, I will need to implement the extraction functionality. Some of these complex features may require the use of counters or externs, whose functionality might be target-specific, to store some certain states across packets for computation. It might also be possible that some complex features cannot be extracted at all on a switch. In this case, I will evaluate the difficulties and limitations of the platform. \\
+
+The outcome of the project will focus on demonstrating the possible functionality and exploring the limit to which feature extraction is capable of, rather than achieving a great performance. The project will be done in P4 programming language on one of two available platforms: bmv2, a P4 software switch, or NetFPGA, which I am familiar with from my Part II project.
+
+\section{Workplan (500 words)}
+\begin{enumerate}[leftmargin=*]
+	%1
+	\item \textbf{Michaelmas vacation weeks 1--2 [5/12--18/12]:} Set up the working environment to work with the bmv2 and NetFPGA platform.
+	
+	%2
+	\item \textbf{Michaelmas vacation weeks 3--4 [19/12--1/1]:} Start literature review to identify the possible features and the use cases for their extraction. Classify different features to groups (``Medium" or ``Hard") by the type of in-network implementation / algorithm required.
+	
+	%3
+	\item \textbf{Michaelmas vacation weeks 5--6 [2/1--15/1]:} Start implementing the algorithm to extract the `Medium` features.
+	
+	%4
+	\item \textbf{Lent weeks 1--2 [16/1--29/1]:} Continue working on implementing the extraction of the ``Medium'' features.\\
+	\textbf{\underline{Milestone:} A working code to extract some ``Medium" features.}
+	
+	%5
+	\item \textbf{Lent weeks 3--4 [30/1--12/2]:} Evaluate the solution for ``Medium" features: functionality, accuracy, resource consumption, etc.  
+	
+	%6
+	\item \textbf{Lent weeks 5--6 [13/2--26/2]:} Start exploring the possibility of extracting the ``Difficult'' features.
+	
+	%7
+	\item \textbf{Lent weeks 7--8 [27/2--11/3]:} Evaluate the difficulties/limitations in the extraction of the ``Difficult'' features. \\
+	\textbf{\underline{Milestone:} Being able to either extract the ``Difficult" features or to evaluate the difficulties/limitations in extracting them.}
+	
+	%8
+	\item \textbf{Easter vacation weeks 1--2 [12/3--25/3]:} Evaluate the solution for ``Difficult" features: functionality, accuracy, resource consumption, etc.  
+	
+	%9
+	\item \textbf{Easter vacation weeks 3--4 [26/3--8/4]:} Possible overflow from the previous weeks. Clean up codes and repository. Start writing dissertation main chapters.
+	
+	%10
+	\item \textbf{Easter vacation weeks 5--6 [9/4--22/4]:} Continue writing dissertation.
+	\\
+	\textbf{\underline{Milestone:} Complete working features extraction functionality and an evaluation of the solution. First draft of dissertation.}
+	
+	%11
+	\item \textbf{Easter weeks 1--2 [23/4--6/5]:}  Continue writing dissertation. Review cycles with feedback from supervisor and corrections to dissertation.
+
+	%12	
+	\item \textbf{Easter weeks 3--4 [7/5--20/5]:}  Continue writing dissertation. Review cycles with feedback from supervisor and corrections to dissertation.
+	\\
+	\textbf{\underline{Milestone:} Complete dissertation. Proof reading and submission.}
+	
+	%13
+	\item \textbf{Easter weeks 5 [21/5--27/5]:} Buffer week.
+\end{enumerate}
+
+% ******************************** Bibliography  *********************************
+
+\pagestyle{plain}
+\bibliographystyle{ieeetr}
+\bibliography{References/references}
+
+\end{document}
+
+
